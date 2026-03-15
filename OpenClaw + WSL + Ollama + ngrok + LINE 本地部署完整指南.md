@@ -337,7 +337,7 @@ openclaw pairing approve line <配對碼>
 
 完成後即可透過 LINE 與 OpenClaw AI 對話。
 
-> **注意：** ngrok 免費版每次重啟網址會改變，需重新更新 Developers Console 的 Webhook URL。若要固定網址，可使用 ngrok 付費方案或改用 Cloudflare Tunnel（需自有網域），可參考這裡 [OpenClaw + WSL + Ollama + Cloudflare Tunnel + LINE 本地部署完整指南 10-4 步驟](https://hackmd.io/@80hB8lX2SvWaxYO715T4Ig/Sk2rXUX5Zg#10-4-%E8%A8%AD%E5%AE%9A-Cloudflare-Tunnel)。
+> **注意：** ngrok 免費版每次重啟網址會改變，需重新更新 Developers Console 的 Webhook URL。若要固定網址，可使用 ngrok 付費方案或改用 Cloudflare Tunnel（需自有網域），可參考這裡 [OpenClaw + WSL + Ollama + Cloudflare Tunnel + LINE 本地部署與外部連線 Web UI 完整指南 10-4 步驟](https://hackmd.io/@80hB8lX2SvWaxYO715T4Ig/Sk2rXUX5Zg#10-4-%E8%A8%AD%E5%AE%9A-Cloudflare-Tunnel)。
 
 ***
 
