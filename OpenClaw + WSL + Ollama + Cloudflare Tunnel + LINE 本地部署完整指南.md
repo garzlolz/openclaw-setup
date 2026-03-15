@@ -19,7 +19,7 @@ Windows 11
     ├── OpenClaw（gateway，port 18789）
     │   └── Web UI：http://localhost:18789
     └── cloudflared（Webhook 轉發，port 18789 → HTTPS 固定網址）
-        └── <你的域名>.dpdns.org
+        └── line.<你的域名>.dpdns.org
 ```
 
 ***
@@ -288,7 +288,7 @@ cloudflared tunnel login
 cloudflared tunnel create openclaw-line
 
 # 設定 DNS 子域名指向 tunnel
-cloudflared tunnel route dns openclaw-line https://<你的域名>.dpdns.org
+cloudflared tunnel route dns openclaw-line line.<你的域名>.dpdns.org
 ```
 
 **建立設定檔：**
@@ -301,7 +301,7 @@ tunnel: <TUNNEL_ID>
 credentials-file: /etc/cloudflared/<TUNNEL_ID>.json
 
 ingress:
-  - hostname: <你的域名>.dpdns.org
+  - hostname: line.<你的域名>.dpdns.org
     service: http://localhost:18789
   - service: http_status:404
 EOF
@@ -327,7 +327,7 @@ sudo systemctl status cloudflared
 2. 找到「**Webhook URL**」欄位，填入：
 
 ```
-https://<你的域名>.dpdns.org/line/webhook
+https://line.<你的域名>.dpdns.org/line/webhook
 ```
 
 > **注意：** 路徑必須是 `/line/webhook`，不是 `/webhooks/line`。
@@ -466,13 +466,13 @@ source ~/.bashrc
 **正確路徑：**
 
 ```
-https://<你的域名>.dpdns.org/line/webhook
+https://line.<你的域名>.dpdns.org/line/webhook
 ```
 
 **錯誤路徑（不可用）：**
 
 ```
-https://<你的域名>.dpdns.org/webhooks/line
+https://line.<你的域名>.dpdns.org/webhooks/line
 ```
 
 ***
@@ -678,7 +678,7 @@ cloudflared tunnel info openclaw-line
 - OpenClaw Web UI：`http://localhost:18789/#token=ollama`
 - Node.js 版本需要 22+，建議透過 nvm 管理，避免系統套件版本過舊
 - 新對話入口：左側「聊天」旁的 **+** 按鈕，或網址 `http://localhost:18789/chat?session=new`
-- LINE Webhook URL 格式：`https://<你的域名>.dpdns.org/line/webhook`
+- LINE Webhook URL 格式：`https://line.<你的域名>.dpdns.org/line/webhook`
 - LINE Webhook 有 **30 秒**硬性 timeout，無法修改；複雜的 agent 任務請使用 Web UI
 - `openclaw config set` 無法修改 JSON 陣列元素，需改用 `jq`
 - Cloudflare Tunnel 設定檔位置：`/etc/cloudflared/config.yml`
