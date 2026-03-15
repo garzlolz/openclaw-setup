@@ -337,7 +337,7 @@ openclaw pairing approve line <配對碼>
 
 完成後即可透過 LINE 與 OpenClaw AI 對話。
 
-> **注意：** ngrok 免費版每次重啟網址會改變，需重新更新 Developers Console 的 Webhook URL。若要固定網址，可使用 ngrok 付費方案或改用 Cloudflare Tunnel（需自有網域），可以參考我另一篇 [OpenClaw + WSL + Ollama + Cloudflare Tunnel + LINE 本地部署與外部連線完整指南](https://hackmd.io/@80hB8lX2SvWaxYO715T4Ig/Sk2rXUX5Zg)。
+> **注意：** ngrok 免費版每次重啟網址會改變，需重新更新 Developers Console 的 Webhook URL。若要固定網址，可使用 ngrok 付費方案或改用 Cloudflare Tunnel（需自有網域），可參考這裡 [OpenClaw + WSL + Ollama + Cloudflare Tunnel + LINE 本地部署完整指南 10-4 步驟](https://hackmd.io/@80hB8lX2SvWaxYO715T4Ig/Sk2rXUX5Zg#10-4-%E8%A8%AD%E5%AE%9A-Cloudflare-Tunnel)。
 
 ***
 
@@ -524,13 +524,13 @@ LINE Webhook 有 **30 秒**硬性 timeout，無法修改。agent 執行任務時
 
 ## 硬體限制與模型選擇
 
-| 模型 | 大小 | PROCESSOR | 適合情境 | 備註 |
-| :-- | :-- | :-- | :-- | :-- |
-| `qwen3.5:4b`（預設 262k ctx） | 3.4 GB | 無法載入 | - | contextWindow 太大 |
-| `qwen3.5-4b-32k`（32k ctx） | 3.4 GB | 完整 GPU | LINE + Web UI 皆可 | **推薦，速度最快** |
-| `qwen3.5:9b`（預設 262k ctx） | 6.6 GB | 無法載入 | - | contextWindow 太大 |
-| `qwen3.5-9b-32k`（32k ctx） | 6.6 GB | 74% CPU / 26% GPU | LINE 簡單指令、Web UI 複雜任務 | 效果較好，速度可接受 |
-| `qwen3.5-9b-128k`（128k ctx） | 6.6 GB | 100% CPU | 僅 Web UI | LINE 30 秒 timeout 必定觸發 |
+| 模型                          | 大小   | PROCESSOR         | 適合情境                       | 備註                        |
+| :---------------------------- | :----- | :---------------- | :----------------------------- | :-------------------------- |
+| `qwen3.5:4b`（預設 262k ctx） | 3.4 GB | 無法載入          | -                              | contextWindow 太大          |
+| `qwen3.5-4b-32k`（32k ctx）   | 3.4 GB | 完整 GPU          | LINE + Web UI 皆可             | **推薦，速度最快**          |
+| `qwen3.5:9b`（預設 262k ctx） | 6.6 GB | 無法載入          | -                              | contextWindow 太大          |
+| `qwen3.5-9b-32k`（32k ctx）   | 6.6 GB | 74% CPU / 26% GPU | LINE 簡單指令、Web UI 複雜任務 | 效果較好，速度可接受        |
+| `qwen3.5-9b-128k`（128k ctx） | 6.6 GB | 100% CPU          | 僅 Web UI                      | LINE 30 秒 timeout 必定觸發 |
 
 > RTX 3050 Ti 只有 4GB VRAM，Xwayland 會額外佔用 600MB~1.5GB。啟用 `OLLAMA_KV_CACHE_TYPE=q8_0` 可將 KV cache 記憶體用量減半，改善 GPU offload 比例。
 
