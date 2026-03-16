@@ -614,3 +614,21 @@ curl http://127.0.0.1:4040/api/tunnels | python3 -m json.tool | grep public_url
 - ngrok 免費版每次重啟網址會變，固定網址需付費方案或改用 Cloudflare Tunnel（需自有網域）
 - LINE Official Account Manager 的 Webhooks 開關需手動開啟，與 Developers Console 的 Use webhook 是兩個不同設定
 - `OLLAMA_KV_CACHE_TYPE=q8_0` 設定位於 `/etc/systemd/system/ollama.service.d/override.conf`
+
+## 性能與穩定性最佳化：遷移至雲端 API 解決方案
+
+若同學在部署過程中發現本地硬體資源不足（例如 **RTX 3050 Ti 4GB** 顯存過小），或遇到以下不穩定現象：
+
+- **載入失敗**：頻繁出現 `model failed to load` 或 `Ollama API error 500`。
+- **任務卡死**：受限於顯存，Context Window 無法開高，導致 Agent 任務因 `compaction` 失敗而中斷。
+
+建議參考我另一篇雲端遷移指南，改用 **阿里雲百煉 (Qwen)** 作為後端模型以獲得更穩定的體驗：
+
+ > **[OpenClaw + 雲模型 Qwen3.5：從本地 Ollama 遷移至阿里雲百煉 (Qwen)](https://hackmd.io/@80hB8lX2SvWaxYO715T4Ig/SyIlD3H9Wl)**
+
+### 遷移至雲端的優勢
+
+- **解除顯存限制**：API 運算不佔用本地 GPU，解決 4GB VRAM 無法處理長文本的困境。
+- **提升回應速度**：雲端推理速度顯著優於本地運行，約快 3 至 5 倍。
+- **高額免費試用**：目前阿里雲國際版提供新用戶高達 **7,000 萬個 Tokens** 的免費試用額度。
+- **穩定支援長文本**：支援 **131K** 以上的 Context Window，確保複雜 Agent 任務順暢執行。
