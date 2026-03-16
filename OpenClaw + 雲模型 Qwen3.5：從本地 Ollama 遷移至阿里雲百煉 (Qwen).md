@@ -8,7 +8,7 @@
 本指南為地端架構調整。進行雲端 API 遷移前，請確保已完成基礎環境（WSL2、LINE Bot、Cloudflare Tunnel）的架設。若尚未完成的同學，請先參考：
 
 * **[OpenClaw + WSL + Ollama + ngrok + LINE 本地部署完整指南](https://hackmd.io/@80hB8lX2SvWaxYO715T4Ig/S1mGoqz9bx)**
-* **[OpenClaw + WSL + Ollama + LINE 本地部署完整指南](https://hackmd.io/@80hB8lX2SvWaxYO715T4Ig/Sk2rXUX5Zg)**
+* **[OpenClaw + WSL + Ollama + Cloudflare Tunnel + LINE 本地部署與外部連線 Web UI 完整指南](https://hackmd.io/@80hB8lX2SvWaxYO715T4Ig/Sk2rXUX5Zg)**
 
 ---
 
